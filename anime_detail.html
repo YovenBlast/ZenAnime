@@ -74,7 +74,16 @@ $(document).ready(function() {
 	document.title = pageName;
 	$('#anime-main-title-container').html(currentAnimeListItemDetails.title);
 	$('#anime-name').html(currentAnimeListItemDetails.title);
-	$('#anime-genre > small').html(currentAnimeListItemDetails.genre);
+
+	///All Genres are seperated///
+	var genreHTMLString = '';
+	var genresList = currentAnimeListItemDetails.genre.split('&&');
+
+	$.each(genresList, function(index, value){
+		genreHTMLString += '<span class="badge text-bg-primary mx-2">' + value + '</span>'
+	});
+
+	$('#anime-genre > small').html(genreHTMLString);
 	$('#anime-description').html(currentAnimeListItemDetails.description);
 	$('.anime-logo-container > img').attr("src", animeListImg_folder + currentAnimeListItemDetails.imgName + '.webp');
 	//Initially load first episode as video

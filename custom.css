@@ -243,6 +243,10 @@ li {
 	height: 200px;
 }
 
+.table-container{
+	overflow: auto;
+}
+
 /* About Us CSS */
 .about-us-main-container{
 	height: var(--anime-details-main-container-height);
@@ -316,6 +320,10 @@ li {
 		margin-top: 0vh !important;
 	}
 
+	.close-button{
+		display: none !important;
+	}
+
     header.main-header .nav-links-container {
         display: none !important;
     }
@@ -377,6 +385,8 @@ li {
 	.logo-title-main-container > a > img{
 		transform: rotate(0deg);
 		transition: transform 0.5s ease-in;
+		position: relative;
+		z-index: 9001;
 	}
 
 	.rotate-logo{

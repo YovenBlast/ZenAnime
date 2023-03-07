@@ -169,7 +169,7 @@ $(document).ready(function() {
 		var page = $(this).attr('href');
 		currentPage = page;
 		$('#content').load(page, function(){
-
+			
 			if (currentPage == "home.html"){
 				//TODO
 				pageName = "Zen Anime";

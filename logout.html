@@ -1,9 +1,13 @@
 <script>
 	$(document).ready(function() {
 		$('.nav-links').html('<li class="mx-3 fs-5"><a href="home.html">Home</a></li><li class="mx-3 fs-5"><a href="about.html">About</a></li><li class="mx-3 fs-5"><a href="login.html">Sign In</a></li>');
+		$('.side-nav-links').html('<li class="close-button mx-3 btn btn-danger my-2 fs-5">Close</li><li class="mx-3 my-2 fs-5 btn btn-primary"><a href="home.html">Home</a></li><li class="mx-3 my-2 fs-5 btn btn-primary"><a href="about.html">About</a></li><li class="mx-3 my-2 fs-5 btn btn-primary"><a href="login.html">Sign In</a></li>');
 
 		localStorage.removeItem('isLoggedIn');
 
 		$('#content').load('login.html');
+
+		pageName = "Log In";
+		document.title = pageName;
 	});
 </script>
