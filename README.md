@@ -19,6 +19,11 @@
 - If `url` in browser is as such `http://127.0.0.1:5500/home.html`, the application won't work as intended(also means VSCode Config step 4 was ignored)
 - According to the previous, if it ever happens, change the `url` to `http://127.0.0.1:5500/`, everything will be back to normal
 - This github includes all images and "`databases`" (which are .txt file or .json files)
+- If you want to test is directly on your phone, 
+	1. Connect phone to the same next network as your PC/Server
+	2. using `ipconfig` in `CMD` on your PC, take your `IPv4 Address`
+	3. Then in `Google Chrome/Or Any browser` on your phone, type the `IP Address` followed by `:5500`
+	4. For example, `192.168.100.1:5500` 
 
 ## Website By:
 - Maheswaren Chinnasamy
