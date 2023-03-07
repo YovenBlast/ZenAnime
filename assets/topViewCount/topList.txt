@@ -1,0 +1,10 @@
+blue_lock;;;;21.5;;;;125;;;;blue_lock
+demon_slayer;;;;17.73;;;;3121;;;;demon_slayer
+kuroko_no_basket;;;;12.97;;;;211;;;;kuroko_no_basket
+tokyo_ghoul;;;;10.8;;;;1283;;;;tokyo_ghoul
+bakuman;;;;10.5;;;;195;;;;bakuman
+spy_x_family;;;;9.9;;;;906;;;;spy_x_family
+goblin_slayer;;;;8.5;;;;174;;;;goblin_slayer
+sirius_the_jaeger;;;;7.0;;;;120;;;;sirius_the_jaeger
+kengan_ashura;;;;5.73;;;;129;;;;kengan_ashura
+shingeki_no_kyojin;;;;3.9;;;;93;;;;shingeki_no_kyojin

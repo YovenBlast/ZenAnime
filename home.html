@@ -1,0 +1,134 @@
+<div class="main-carousel-container">
+	<div id="mainCarousel" class="carousel slide h-100 mainCarousel" data-bs-ride="carousel">
+		<div class="carousel-inner h-100">
+
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+</div>
+
+<div class="anime-list-main-container pt-3">
+	<div class="section-title mb-3 p-3 text-light rounded-pill shadow fs-2 fw-bolder">
+		Top 10 Anime List
+	</div>
+	<div class="anime-list-grid-container">
+		<ul class="anime-list-display-container">
+			
+		</ul>
+	</div>
+</div>
+
+
+
+<script >
+$(document).ready(function() {
+	////CHECKS IF USER LOGGED IN OR NOT///////
+	if (localStorage.getItem('isLoggedIn') !== null) {
+		// The key exists in localStorage
+		$('.nav-links').html('<li class="mx-3 fs-5"><a href="home.html">Home</a></li><li class="mx-3 fs-5"><a href="about.html">About</a></li><li class="mx-3 fs-5"><a href="logout.html">Log Out</a></li>');
+		$('.side-nav-links').html('<li id class="close-button fs-5">Close</li><li class="mx-3 fs-5"><a href="home.html">Home</a></li><li class="mx-3 fs-5"><a href="about.html">About</a></li><li class="mx-3 fs-5"><a href="logout.html">Log Out</a></li>');
+		closeButton = $('.close-button');
+		closeButton.on('click', () => {
+			console.log('closing');
+			const visibility = sidebar.attr('data-visible');
+			if (visibility === "false") {
+				sidebar.attr('data-visible', true);
+			} else if (visibility === "true") {
+				sidebar.attr('data-visible', false);
+			}
+
+			const sidebaropen = sidebar.attr('data-visible');
+
+			if (sidebaropen === "true") {
+				body.addClass('noscroll');
+			} else {
+				body.removeClass('noscroll');
+			}
+
+		});
+	} else {
+		// The key does not exist in localStorage
+		$('#content').load('login.html');
+	}
+
+
+	////////////////////////////////////////////
+	//This part is for Carousel Dynamic ///
+	///////////////////////////////////////////
+	var HTMLString = "";
+	let i = 1;	//initial index count for images
+	var nextImageCount = 0; //next segment imageIndex
+	var remainderCount = 0; //remaining images count
+
+	while (i <= banner_images_count) {
+		if (i == 1){
+			HTMLString += '<div class="carousel-item h-100 active">';
+		}
+		else{
+			HTMLString += '<div class="carousel-item h-100">';
+		}
+
+		if ((i + (imageCountPerSegment - 1)) <= banner_images_count)
+		{
+			nextImageCount = i;
+			remainderCount = imageCountPerSegment - 1;
+			i += imageCountPerSegment - 1;
+		}else{
+			nextImageCount = i;
+			remainderCount = (banner_images_count - i);
+			i = banner_images_count;
+		}
+
+		for (let j = nextImageCount; j <= nextImageCount + remainderCount; j++){
+			HTMLString += '<img src="' + bannerImg_folder + j + '.webp" class="d-block rounded-4 h-100" alt="...">';
+		}
+		HTMLString += '</div>';
+		i++;
+	}
+	$('#mainCarousel > .carousel-inner').html(HTMLString);
+
+	////////////////////////////////////////////
+	//This part is for Anime List generation///
+	///////////////////////////////////////////
+	var animeListHTMLString = "";
+	var animeListItemDetails = [];
+	var anime_list_item_detail = [];
+	var animeListTotalCount = anime_list_details_from_file.length;
+
+	//send data to array to allow usage
+	$.each(anime_list_details_from_file, function(index, value){
+		anime_list_item_detail = $.trim(value).split(';;');
+
+		animeListItemDetails[index] = {
+			name: anime_list_item_detail[0],
+			title: anime_list_item_detail[1],
+			description: anime_list_item_detail[2],
+			imgName: anime_list_item_detail[3],
+			genre: anime_list_item_detail[4]
+		};
+
+	});
+
+	$.each(animeListItemDetails, function(index, anime_details){
+		animeListHTMLString += '<li class="anime-list-item"><div id="' + index + '" class="card shadow _jsAnimeCard anime-card" style="width: 18rem;" data-anime-name="' + anime_details.name + 
+		'" data-detail-href=""><img src="' + animeListImg_folder  + anime_details.imgName + '.webp" class="card-img-top img-thumbnail" alt="..."><div class="card-body anime-card-body"><h5 class="card-title anime-card-title">' + anime_details.title +
+		'</h5><p class="card-text anime-card-text">' + anime_details.description + '</p></div>';
+	});
+
+	$('.anime-list-main-container > .anime-list-grid-container > .anime-list-display-container' ).html(animeListHTMLString);
+
+	$('._jsAnimeCard').click(function(event) {
+		var animeListItemClicked = $(this).attr('id');
+		currentAnimeListItemDetails = animeListItemDetails[animeListItemClicked];
+		currentAnimeListItemLinkDetails = anime_list_links_from_file[currentAnimeListItemDetails.name];
+		$('#content').load('anime_detail.html');
+	});
+});
+</script>

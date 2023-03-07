@@ -1,0 +1,378 @@
+:root{
+	--main-header-height: 13vh;
+
+	--home-main-carousel-height: calc(100vh - var(--main-header-height));
+
+	--anime-details-main-container-height: calc(100vh - var(--main-header-height));
+}
+
+a {
+	text-decoration: none !important;
+}
+
+li {
+	list-style: none !important;
+}
+
+.noscroll{
+	overflow: hidden;
+}
+
+.main-header .side-bar{
+	position: fixed;
+	overflow-y: scroll;
+	z-index: 9000;
+	display: flex;
+	grid-row-gap: 3rem;
+	inset: 0 0 0 65%;
+	align-items: center;
+	flex-direction: column;
+	padding: min(20%, 5rem) 2rem;
+	background: hsl(0, 0%, 100%, 0.7);
+	/* visibility: hidden; */
+	transform: translateX(100%);
+	transition: transform 0.5s ease-out;
+}
+
+.main-header{
+	height: var(--main-header-height);
+	position: sticky;
+	top: 0;
+	z-index: 9999;
+	background-color: rebeccapurple;
+}
+
+.search-bar{
+	width: 500px
+}
+
+.search-bar .form-control {
+	background-color: mediumpurple !important;
+	border-color: mediumpurple !important;
+	box-shadow: none !important;
+	color:lightgray !important;
+}
+
+.search-bar .input-group-text {
+	background-color: mediumpurple !important;
+	border-color: mediumpurple !important;
+
+}
+
+.main-navbar{
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	align-items: center;
+}
+
+.nav-links-container{
+	display: flex;
+	align-items: center;
+	width: 25%
+}
+
+.nav-links{
+	display: flex;
+	/* justify-content: space-between; */
+	width: 100%;
+	margin: 0 !important;
+}
+
+.nav-links a{
+	color: white !important;
+}
+
+.nav-links > li{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	padding: 5px;
+	height: 5vh;
+	background-color: none;
+	border-radius: 0px;
+	transition: all 0.3s;
+}
+
+.nav-links > li:hover{
+	background-color: blue;
+	border-radius: 20px;
+}
+
+.logo-title-main-container{
+	width: 310px;
+	margin-top: 9vh;
+}
+.logo-title-main-container > a > img{
+	width: 100%;
+}
+
+.main-carousel-container {
+	padding: 2vw;
+	height: var(--home-main-carousel-height);
+	background-image: url('assets/images/banners/banner-bg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Center the image horizontally and vertically */
+}
+
+/* Carousel Items appears in multiple */
+
+.carousel-item.active{
+	display: flex !important;
+	justify-content: space-around;
+}
+  
+.carousel-item.carousel-item-start{
+	display: flex !important;
+	justify-content: space-around;
+}
+
+.carousel-item.carousel-item-end{
+	display: flex !important;
+	justify-content: space-around;
+}
+
+.anime-list-main-container{
+	background-image: url('assets/images/anime_list/anime-list-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Center the image horizontally and vertically */
+
+}
+
+.anime-list-grid-container > .anime-list-display-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-auto-flow: row;
+	grid-row-gap: 1vw;
+}
+
+.anime-list-display-container .anime-list-item{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.section-title{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-inline: 20%;
+	background-color: rebeccapurple;
+}
+
+.anime-card-text {
+	max-height: 300px !important;
+	display: -webkit-box; /* Required for Safari and Chrome */
+    -webkit-line-clamp: 3; /* Limit the text to 3 lines */
+    -webkit-box-orient: vertical; /* Required for Safari and Chrome */
+    overflow: hidden; /* Hide text that overflows the container */
+    text-overflow: ellipsis; /* Add an ellipsis to the end of the visible text */
+
+}
+
+/* Anime Details CSS */
+#anime-detail-main-container{
+	/* height: var(--anime-details-main-container-height); */
+	padding-block: 7vh;
+	padding-inline: 3vw;
+	background-image: url('assets/images/anime_list/anime-list-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Center the image horizontally and vertically */
+}
+
+#anime-watch-main-container{
+	display: flex;
+	justify-content: center;
+	height: 465px;
+	background-image: url('assets/images/banners/banner-bg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Center the image horizontally and vertically */
+}
+
+.anime-episodes-list-container {
+	max-height: 100%;
+	overflow: auto;
+	width: 11%;
+	padding: 20px;
+	text-align: center;
+	border-top: solid 5px red;
+	border-bottom: solid 5px red;
+	border-radius: 20px;
+}
+
+.anime-episodes-list-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for WebKit browsers */
+}
+
+.anime-details-container{
+	display: flex;
+	justify-content: center;
+}
+
+.anime-details-container > .card {
+	width: 70%;
+}
+
+.anime-logo-container > img{
+	height: 100% !important;
+}
+
+.anime-episode-list-item{
+	cursor: pointer;
+}
+
+.anime-episode-container{
+	width: 43%;
+}
+
+#anime-episode-video{
+	height: 100%;
+}
+
+#anime-episode-video > iframe{
+	width: 100%;
+	height: 100%;
+}
+
+.topView-table img{
+	height: 200px;
+}
+
+/* About Us CSS */
+.about-us-main-container{
+	height: var(--anime-details-main-container-height);
+	padding-block: 15vh;
+	background-image: url('assets/images/anime_list/anime-list-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Center the image horizontally and vertically */
+}
+
+.about-us-details-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.about-us-description-container{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+.about-us-description{
+	width: 50%;
+}
+
+.about-us-developer-portfolio{
+	display: flex;
+	justify-content: center;
+	height: 30vh;
+}
+
+.developer-portrait-container{
+	height: 100%;
+}
+
+.developer-portrait-container > img{
+	height: 100%;
+}
+
+.developer-details-container{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Login CSS */
+#main-login-main-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--anime-details-main-container-height);
+	padding-block: 15vh;
+	background-image: url('assets/images/anime_list/anime-list-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Center the image horizontally and vertically */
+}
+
+.login-card-container{
+	display: flex;
+	justify-content: center;
+}
+
+.login-card-container > .card{
+	width: 25rem;
+}
+
+@media only screen and (max-width: 768px) {
+	.logo-title-main-container{
+		margin-top: 0vh !important;
+	}
+
+    header.main-header .nav-links-container {
+        display: none !important;
+    }
+
+
+	header.main-header .side-bar[data-visible= "true"]{    /*data-visible is an attribule in the html file itself which tells us the data is visible or not*/
+		/* display: flex; */
+		transform: translateX(0%);
+	}
+
+	.anime-list-grid-container > .anime-list-display-container{
+		grid-template-columns: 1fr;
+	}
+
+	.login-card-container > .card{
+		width: 18rem;
+	}
+
+	.main-carousel-container{
+		display: flex;
+		align-items: center;
+	}
+
+	#mainCarousel {
+		height: 30% !important;
+	}
+
+	.carousel-item > img{
+		width: 100% !important;
+	}
+
+	.about-us-developer-portfolio{
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#anime-watch-main-container{
+		flex-direction: column;
+	}
+
+	.anime-episodes-list-container{
+		width: 75%;
+	}
+
+	.anime-episode-container{
+		width: 75%;
+		margin-top: 30px;
+	}
+
+	#anime-episode-video > iframe {
+		height: 16rem;
+	}
+
+	.topView-table img{
+		height: 150px;
+	}
+
+}
+

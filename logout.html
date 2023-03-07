@@ -1,0 +1,9 @@
+<script>
+	$(document).ready(function() {
+		$('.nav-links').html('<li class="mx-3 fs-5"><a href="home.html">Home</a></li><li class="mx-3 fs-5"><a href="about.html">About</a></li><li class="mx-3 fs-5"><a href="login.html">Sign In</a></li>');
+
+		localStorage.removeItem('isLoggedIn');
+
+		$('#content').load('login.html');
+	});
+</script>

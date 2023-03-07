@@ -1,0 +1,118 @@
+<div id="anime-detail-main-container">
+	<div id="anime-main-title-container" class="fw-bolder fs-1 mx-5 text-center">
+
+	</div>
+
+	<div id="anime-watch-main-container" class="py-3 shadow rounded">
+		<div class="anime-episodes-list-container mx-5">
+			<ul class="anime-episodes-list list-group">
+			</ul>
+		</div>
+
+		<div class="anime-episode-container mx-5">
+			<div id="anime-episode-video" class="anime-episode-video">
+
+			</div>
+		</div>
+	</div>
+
+	<div class="anime-details-container p-3 my-3">
+		<div class="card mb-3 shadow-lg">
+			<div class="row g-0">
+				<div class="col-md-4 anime-logo-container">
+				<img src="..." class="img-fluid rounded-start" alt="...">
+				</div>
+				<div class="col-md-8">
+				<div class="card-body">
+					<div id="anime-name" class="card-title">Card title</div>
+					<p id="anime-genre" class="card-text "><small class="text-muted">Last updated 3 mins ago</small></p>
+					<p id="anime-description" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="top-views-list-table-container">
+		<div class="table-title-container">
+			<div class="table-title fw-bolder fs-2">Top Views Ranking</div>
+		</div>
+
+		<div class="main-table-container">
+			<div class="table-container">
+				<table class="table topView-table">
+					<thead>
+						<tr>
+						  <th scope="col">#</th>
+						  <th scope="col">Anime Name</th>
+						  <th scope="col">Total Views</th>
+						  <th scope="col">Total Rating</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+							<td><img src="..." alt="..."></td>
+							<td>Anime Name</td>
+							<td>Million Views</td>
+							<td>Rating</td>
+						</tr>
+					  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	//Take Anime Title and set document Title as it 
+	var animeEpisodeLinks_HTMLString ="";
+	var previousClickedEpisode = "";
+	//console.log(currentAnimeListItemLinkDetails);
+	pageName = currentAnimeListItemDetails.title;
+	document.title = pageName;
+	$('#anime-main-title-container').html(currentAnimeListItemDetails.title);
+	$('#anime-name').html(currentAnimeListItemDetails.title);
+	$('#anime-genre > small').html(currentAnimeListItemDetails.genre);
+	$('#anime-description').html(currentAnimeListItemDetails.description);
+	$('.anime-logo-container > img').attr("src", animeListImg_folder + currentAnimeListItemDetails.imgName + '.webp');
+	//Initially load first episode as video
+	$('#anime-episode-video').html('<iframe src="' + currentAnimeListItemLinkDetails[0].episodeLink + '" allowfullscreen="true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>');
+
+	//Load Epsiode Links
+	$.each(currentAnimeListItemLinkDetails, function(index, anime_link_detail){
+		if (index == 0){
+			animeEpisodeLinks_HTMLString += '<li class="anime-episode-list-item list-group-item" data-episode-no="' +  anime_link_detail.episodeNo +  '">Episode' + anime_link_detail.episodeNo + '</li>';
+		}
+		else{
+			animeEpisodeLinks_HTMLString += '<li class="anime-episode-list-item list-group-item" data-episode-no="' +  anime_link_detail.episodeNo +  '">Episode' + anime_link_detail.episodeNo + '</li>';
+		}
+	});
+	$('#anime-watch-main-container > .anime-episodes-list-container > .anime-episodes-list').html(animeEpisodeLinks_HTMLString);
+
+	///Change video link on click///
+	$('.anime-episode-list-item').click(function(event) {
+		var currentClickedEpisode = $(this);
+		var episodeClicked = $(this).data("episode-no");
+
+		if(previousClickedEpisode != ""){
+			previousClickedEpisode.removeClass('active');
+			previousClickedEpisode = currentClickedEpisode;
+			currentClickedEpisode.addClass('active');
+		}
+		else{
+			previousClickedEpisode = currentClickedEpisode;
+			currentClickedEpisode.addClass('active');
+		}
+		
+		$('#anime-episode-video').html('<iframe src="' + currentAnimeListItemLinkDetails[episodeClicked - 1].episodeLink + '" allowfullscreen="true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>');
+	});
+
+	$('.topView-table tbody').html(topViewCountHtmlString);
+
+});
+</script>
+
+
+

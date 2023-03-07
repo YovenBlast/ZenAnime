@@ -1,0 +1,56 @@
+<div id="main-login-main-container">
+	<div class="login-card-container">
+		<div class="card mb-3 shadow-lg">
+			<div class="card-body">
+			  <h5 class="card-title">Log In</h5>
+			  <div class="login-form-container">
+				<form id="login-form">
+					<div class="mb-3">
+					  <label for="login_email" class="form-label">Email address</label>
+					  <input type="email" class="form-control" name="email" id="login_email" aria-describedby="emailHelp">
+					  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+					</div>
+					<div class="mb-3">
+					  <label for="login_password" class="form-label">Password</label>
+					  <input type="password" class="form-control" name="password" id="login_password">
+					</div>
+					<button type="submit" class="btn w-100 btn-primary mt-3">Log In</button>
+				</form>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function() {
+	$('#login-form').submit(function(event) {
+		event.preventDefault(); // Prevent the form from submitting
+		var email = $('#login_email').val();
+		var password = $('#login_password').val();
+		// Read the contents of the file
+		$.get('assets/images/users/user_db_list.txt', function(data) {
+			// Split the contents into an array of lines
+			
+			var lines = data.split('\n');
+
+			// Loop through the lines and check for a match
+			for (var i = 0; i < lines.length; i++) {
+				var parts = lines[i].split(';;;;');
+				var fileEmail = parts[0];
+				var filePassword = parts[1];
+
+				// Compare the email and password fields with the values in the file
+				if (email === fileEmail && password === filePassword) {
+					// If there is a match, set the user's login status in localStorage
+					localStorage.setItem('isLoggedIn', true);
+					
+					$('#content').load('home.html');
+				}
+			}
+
+		});
+	});
+
+});
+</script>
