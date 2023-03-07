@@ -31,8 +31,11 @@ $(document).ready(function() {
 		// Read the contents of the file
 		$.get('assets/images/users/user_db_list.txt', function(data) {
 			// Split the contents into an array of lines
-			
-			var lines = data.split('\n');
+			console.log(data);
+			var fileContent = data.replace(/\r/g, '');
+			console.log(fileContent);
+
+			var lines = fileContent.split('\n');
 
 			// Loop through the lines and check for a match
 			for (var i = 0; i < lines.length; i++) {

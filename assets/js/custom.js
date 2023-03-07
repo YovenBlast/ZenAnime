@@ -40,7 +40,8 @@ $.getJSON("assets/images/anime_list/anime_links.json", function(data) {
 
 //Get Top View Count Anime List//
 $.get('assets/topViewCount/topList.txt', function(data) {
-	topViewList_from_file = data.split('\n');
+	var fileContent = data.replace(/\r/g, '');
+	topViewList_from_file = fileContent.split('\n');
 	console.log(topViewList_from_file);
 
 	///Processing Details for Top View Counts Anime and to table///
@@ -79,8 +80,10 @@ $(document).ready(function() {
 				const visibility = sidebar.attr('data-visible');
 				if (visibility === "false") {
 					sidebar.attr('data-visible', true);
+					$('.logo-title-main-container > a > img').addClass('rotate-logo');
 				} else if (visibility === "true") {
 					sidebar.attr('data-visible', false);
+					$('.logo-title-main-container > a > img').removeClass('rotate-logo');
 				}
 		
 				const sidebaropen = sidebar.attr('data-visible');
@@ -96,8 +99,10 @@ $(document).ready(function() {
 				const visibility = sidebar.attr('data-visible');
 				if (visibility === "false") {
 					sidebar.attr('data-visible', true);
+					$('.logo-title-main-container > a > img').addClass('rotate-logo');
 				} else if (visibility === "true") {
 					sidebar.attr('data-visible', false);
+					$('.logo-title-main-container > a > img').removeClass('rotate-logo');
 				}
 		
 				const sidebaropen = sidebar.attr('data-visible');

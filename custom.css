@@ -24,11 +24,11 @@ li {
 	z-index: 9000;
 	display: flex;
 	grid-row-gap: 3rem;
-	inset: 0 0 0 65%;
+	inset: 0 0 0 40%;
 	align-items: center;
 	flex-direction: column;
 	padding: min(20%, 5rem) 2rem;
-	background: hsl(0, 0%, 100%, 0.7);
+	background: hsl(0, 0%, 100%, 1);
 	/* visibility: hidden; */
 	transform: translateX(100%);
 	transition: transform 0.5s ease-out;
@@ -372,6 +372,23 @@ li {
 
 	.topView-table img{
 		height: 150px;
+	}
+
+	.logo-title-main-container > a > img{
+		transform: rotate(0deg);
+		transition: transform 0.5s ease-in;
+	}
+
+	.rotate-logo{
+		transform: rotate(90deg) !important;
+	}
+
+	.side-nav-links{
+		padding-left: 0 !important;
+	}
+
+	.side-nav-links a {
+		color: white !important;
 	}
 
 }

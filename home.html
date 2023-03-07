@@ -33,15 +33,17 @@ $(document).ready(function() {
 	if (localStorage.getItem('isLoggedIn') !== null) {
 		// The key exists in localStorage
 		$('.nav-links').html('<li class="mx-3 fs-5"><a href="home.html">Home</a></li><li class="mx-3 fs-5"><a href="about.html">About</a></li><li class="mx-3 fs-5"><a href="logout.html">Log Out</a></li>');
-		$('.side-nav-links').html('<li id class="close-button fs-5">Close</li><li class="mx-3 fs-5"><a href="home.html">Home</a></li><li class="mx-3 fs-5"><a href="about.html">About</a></li><li class="mx-3 fs-5"><a href="logout.html">Log Out</a></li>');
+		$('.side-nav-links').html('<li class="close-button mx-3 btn btn-danger my-2 fs-5">Close</li><li class="mx-3 my-2 fs-5 btn btn-primary"><a href="home.html">Home</a></li><li class="mx-3 my-2 fs-5 btn btn-primary"><a href="about.html">About</a></li><li class="mx-3 my-2 fs-5 btn btn-primary"><a href="logout.html">Log Out</a></li>');
 		closeButton = $('.close-button');
 		closeButton.on('click', () => {
 			console.log('closing');
 			const visibility = sidebar.attr('data-visible');
 			if (visibility === "false") {
 				sidebar.attr('data-visible', true);
+				$('.logo-title-main-container > a > img').addClass('rotate-logo');
 			} else if (visibility === "true") {
 				sidebar.attr('data-visible', false);
+				$('.logo-title-main-container > a > img').removeClass('rotate-logo');
 			}
 
 			const sidebaropen = sidebar.attr('data-visible');

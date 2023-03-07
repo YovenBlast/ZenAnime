@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="Online Registration Form.css">
+    
+</head>
+<body>
+ <form autocomplete="off" action="action_page.html">
+    <div class="container">
+        <h1>Online Registration Form</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label for="title"><b>Title</b></label>
+        <input type="text" placeholder="Enter Title" name="tile" id="title" required>
+        
+        
+
+       
+        <label for="firstname"><b>Firstname</b><li class="rq">*Enter alphabets only.</li></label>
+        <input type="text" placeholder="Enter Firstname" name="firstname" id="firstname" required pattern="[A-Za-z]+" title="First name should contain only letters">
+       
+            
+        <label for="lastname"><b>Lastname</b><li class="rq">*Enter alphabets only.</li></label>
+        <input type="text" placeholder="Enter Lastname" name="lastname" id="lastname" required pattern="[A-Za-z]+" title="Last name should contain only letters">
+
+        <label for="street"><b>Street</b></label>
+        <input type="text" placeholder="Enter Street" name="street" id="street" required>
+
+        <label for="city"><b>City</b></label>
+        <input type="text" placeholder="Enter City" name="city" id="city" list="city-list" autocomplete="on" required>
+        
+        <datalist id="city-list">
+          <option value="Curepipe">
+          <option value="Flacq">
+          <option value="Port-Louis">
+          <option value="Mahebourg">
+          <option value="Quatre-Bornes">
+          <option value="Phoenix">
+          <option value="San Antonio">
+          <option value="San Diego">
+          <option value="Dallas">
+          <option value="San Jose">
+        </datalist>
+          
+        <script>
+          var cities = [
+            "Curepipe",
+            "Flacq",
+            "Port-Louis",
+            "Mahebourg",
+            "Quatre-Bornes",
+            "Phoenix",
+            "San Antonio",
+            "San Diego",
+            "Dallas",
+            "San Jose"
+          ];
+      
+          var cityInput = document.getElementById("city");
+          cityInput.addEventListener("input", function() {
+            var suggestions = [];
+      
+            for (var i = 0; i < cities.length; i++) {
+              if (cities[i].toLowerCase().startsWith(this.value.toLowerCase())) {
+                suggestions.push(cities[i]);
+              }
+            }
+      
+            var datalist = document.getElementById("city-list");
+            datalist.innerHTML = "";
+      
+            for (var i = 0; i < suggestions.length; i++) {
+              var option = document.createElement("option");
+              option.value = suggestions[i];
+              datalist.appendChild(option);
+            }
+          });
+        </script>
+  
+      
+      
+        
+
+        <label for="mobile_contact_number"><b>Mobile contact number</b></label>
+        <input type="text" placeholder="Enter Mobile contact number" name="mobile_contact_number" id="mobile_contact_number" maxlength="8" required pattern="5[0-9]{7}" title="mobile_contact_number should only have numerical values and it should contain 8 digits starting with number 5">
+        
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
+        <ul>
+        <label for="gender"><b>Gender</b></label>
+        <li><input type="radio" name="sex" value="Male" checked /><span>Male</span></li>
+        <li><input type="radio" name="sex" value="Female" /><span>Female</span></li>
+        </ul>
+
+        <label for="dob"><b>Date of Birth</b></label><br><br>
+        <input type="date" id="dob" name="dob" max="2005-03-07" min="1905-03-07" required><br><br>
+      <!--<select name="month">
+        <option value ="month"> Month</otion>
+        <option value ="january"> January</otion>
+        <option value ="february"> February</otion>
+        <option value ="mars"> Mars</otion>
+        <option value ="april"> April</otion>
+        <option value ="may"> May</otion>    
+        <option value ="june"> June</otion>
+        <option value ="july"> July</otion>
+        <option value ="august"> August</otion>
+        <option value ="september"> September</otion>
+        <option value ="october"> October</otion>
+        <option value ="november"> November</otion>
+        <option value ="december"> December</otion>
+      </select>
+      <select name="days">
+        <option value ="days"> Days</option>
+        <option value ="1"> 1</option>
+        <option value ="2"> 2</option>
+        <option value ="3"> 3</option>
+        <option value ="4"> 4</option>
+        <option value ="5"> 5</option>
+        <option value ="6"> 6</option>
+        <option value ="7"> 7</option>
+        <option value ="8"> 8</option>
+        <option value ="9"> 9</option>
+        <option value ="10"> 10</option>
+        <option value ="11"> 11</option>
+        <option value ="12"> 12</option>
+        <option value ="13"> 13</option>
+        <option value ="14"> 14</option>
+        <option value ="15"> 15</option>
+        <option value ="16"> 16</option>
+        <option value ="17"> 17</option>
+        <option value ="18"> 18</option>
+        <option value ="19"> 19</option>
+        <option value ="20"> 20</option>
+        <option value ="21"> 21</option>
+        <option value ="22"> 22</option>
+        <option value ="23"> 23</option>
+        <option value ="24"> 24</option>
+        <option value ="25"> 25</option>
+        <option value ="26"> 26</option>
+        <option value ="27"> 27</option>
+        <option value ="28"> 28</option>
+        <option value ="29"> 29</option>
+        <option value ="30"> 30</option>
+        <option value ="31"> 31</option>
+      </select>
+      <select name="years">
+        <option value ="years"> Years</option>
+        <option value ="1985"> 1985</option>
+        <option value ="1986"> 1986</option>
+        <option value ="1987"> 1987</option>
+        <option value ="1988"> 1988</option>
+        <option value ="1989"> 1989</option>
+        <option value ="1990"> 1990</option>
+        <option value ="1991"> 1991</option>
+        <option value ="1992"> 1992</option>
+        <option value ="1993"> 1993</option>
+        <option value ="1994"> 1994</option>
+        <option value ="1995"> 1995</option>
+        <option value ="1996"> 1996</option>
+        <option value ="1997"> 1997</option>
+        <option value ="1998"> 1998</option>
+        <option value ="1999"> 1999</option>
+        <option value ="2000"> 2000</option>
+        <option value ="2001"> 2001</option>
+        <option value ="2002"> 2002</option>
+        <option value ="2003"> 2003</option>
+        <option value ="2004"> 2004</option>
+        <option value ="2005"> 2005</option>
+        <option value ="2006"> 2006</option>
+        <option value ="2007"> 2007</option>
+        <option value ="2008"> 2008</option>
+        <option value ="2009"> 2009</option>
+        <option value ="2010"> 2010</option>
+        <option value ="2011"> 2011</option>
+        <option value ="2012"> 2012</option>
+        <option value ="2013"> 2013</option>
+        <option value ="2014"> 2014</option>
+        <option value ="2015"> 2015</option>
+        <option value ="2016"> 2016</option>
+        <option value ="2017"> 2017</option>
+        <option value ="2018"> 2018</option>
+        <option value ="2019"> 2019</option>
+        <option value ="2020"> 2020</option>
+        <option value ="2021"> 2021</option>
+        <option value ="2022"> 2022</option>
+        <option value ="2023"> 2023</option>
+      </select><br><br>-->
+
+      <td><b>Select Nationality:</b><br><br>
+        <select id='nationality' onchange="changeDropdown(this.value);">
+            <option value='MU'>Mauritian</option>
+            <option value='O'>Others</option>
+        </select><br><br>
+      </td>
+        
+        <label for="specifify_Nationality"><b>Specify Nationality</b></label>
+        <input type="text" placeholder="Enter Specify Nationality" name="specifify_Nationality" id="specifify_Nationality" required>
+        
+        <label for="nic/passport"><b>NIC/Passport</b></label>
+        <input type="text" placeholder="Enter NIC/Passport" name="nic/passport" id="nic/passport" maxlength="14" pattern="[A-Za-z]{1}[0-9]{13}" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required pattern=".{8,}" title="Password must be at least 8 characters long"><br>
+
+        <label for="psw-confirm"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="psw-confirm" id="psw-confirm" required >
+
+        <div id="password-error" style="display:none; color:red;">
+          Passwords do not match
+        </div>
+        
+        <div id="message">
+          <h3>Password must contain the following:</h3>
+          <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+          <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+          <p id="number" class="invalid">A <b>number</b></p>
+          <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div>
+    </hr>
+
+        <p>By creating an account you agree to our <a href="#">Legal Terms & Conditions</a>.</p>
+        Checkbox: <input type="checkbox" id="myCheck" onclick="myFunction()">
+
+        <p id="text" style="display:none">Agreed to Terms & Conditions!</p>
+
+        <!-- your input fields here -->
+        <button type="submit" onclick="validate()" class="registerbtn">Register</button>
+        <button type="reset" onclick="confirmReset()" class="resetbtn">Reset</button>
+
+        
+        
+        
+    </div>
+
+    <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+    </div>
+ </form>   
+ <script src="Online Registration Form.JS"></script>
+</body>
+</body>
+</html>
